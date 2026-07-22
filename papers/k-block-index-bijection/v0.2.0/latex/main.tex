@@ -1,0 +1,59 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Rk}{\mathcal{R}_k}
+\newcommand{\Sk}{\mathcal{S}_k}
+\newcommand{\bk}{b_k}
+\newcommand{\lk}{\ell_k}
+
+\input{metadata}
+
+\begin{document}
+
+\begin{abstract}
+For an integer $k\geq2$, Wang and Zhang defined a $k$-block index on
+$k$-regular partitions and stated an identity equating its joint distribution
+with the length to the joint distribution of the $k$-alternating length and
+the length on $k$-strict partitions. A direct bijection is given. The map
+iterates a simultaneous transfer which lowers the largest part of every
+nonterminal block by $k$ and deletes one part from the terminal block. The
+successive block indices form a partition whose adjacent differences are less
+than $k$. Its conjugate is $k$-strict. An explicit reverse block transfer
+establishes bijectivity and gives the required preservation of size and both
+statistics.
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/definitions}
+\input{sections/transfer}
+\input{sections/bijection}
+\input{sections/example}
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

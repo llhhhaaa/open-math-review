@@ -1,0 +1,83 @@
+\section{The bijection and its statistics}\label{sec:bijection}
+
+Start with $\lambda^{(0)}=\lambda\in\Rk$ and define
+\begin{equation}\label{eq:iterated-transfer}
+ \lambda^{(i+1)}=\tau\bigl(\lambda^{(i)}\bigr)
+ \quad\text{while }\lambda^{(i)}\ne\varnothing.
+\end{equation}
+The process terminates by \eqref{eq:size-transfer}. Let
+\begin{equation}\label{eq:transfer-sequence}
+ \mathbf{s}(\lambda)=(s_1,s_2,\ldots,s_m),
+ \qquad s_i=\bk\bigl(\lambda^{(i-1)}\bigr),
+\end{equation}
+where $\lambda^{(m)}=\varnothing$. Define
+\begin{equation}\label{eq:definition-phi}
+ \Phi_k(\lambda)=\mathbf{s}(\lambda)'.
+\end{equation}
+
+\begin{proposition}\label{prop:sequence-properties}
+Let $\lambda\in\Rk$ be nonempty. The sequence $\mathbf{s}(\lambda)$ is a
+partition and satisfies
+\begin{equation}\label{eq:gap-bound}
+ 0\leq s_i-s_{i+1}<k\quad(1\leq i<m),
+ \qquad 0<s_m<k.
+\end{equation}
+Moreover, $\Phi_k(\lambda)$ is $k$-strict and satisfies the three identities
+in \eqref{eq:statistic-preservation}.
+\end{proposition}
+
+\begin{proof}
+Apply \Cref{lem:converse-transfer} at every step of
+\eqref{eq:iterated-transfer}. It gives the first inequality in
+\eqref{eq:gap-bound}. In the final nonempty partition all remaining parts lie
+in a single block with top less than $k$, so $0<s_m<k$.
+
+For a partition $\mathbf{s}$, the multiplicity of the part $i$ in its
+conjugate is $s_i-s_{i+1}$, where $s_{m+1}=0$. Thus
+\eqref{eq:gap-bound} implies that $\mathbf{s}'$ is $k$-strict. Telescoping
+\eqref{eq:size-transfer} over the transfer sequence gives
+\begin{equation}\label{eq:size-telescope}
+ |\lambda|=s_1+s_2+\cdots+s_m=|\mathbf{s}'|.
+\end{equation}
+The length of $\mathbf{s}'$ is its largest part $s_1=\bk(\lambda)$.
+
+It remains to identify the length statistic. A transfer changes no number of
+parts except when a terminal block is present, in which case it deletes one
+part. Such a block is present exactly when the corresponding $s_i$ is not a
+multiple of $k$. Hence
+\begin{equation}\label{eq:length-nonmultiples}
+ \ell(\lambda)=\#\{i: k\nmid s_i\}.
+\end{equation}
+Let $\pi=\mathbf{s}'$. For every $j\geq0$,
+\begin{equation}\label{eq:strip-count}
+ \pi_{jk+1}-\pi_{(j+1)k}
+ =\#\{i: jk<s_i<(j+1)k\}.
+\end{equation}
+Summing \eqref{eq:strip-count} and using \eqref{eq:k-alternating-length}
+shows that its left-hand side is $\lk(\pi)$ and its right-hand side is the
+quantity in \eqref{eq:length-nonmultiples}. This proves all three identities.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:main}]
+The empty partition maps to itself. For a nonempty $\lambda$, the preceding
+proposition shows that $\Phi_k$ has the required statistics. It remains to
+prove that the map is a bijection on nonempty partitions. Let $\pi\in\Sk$ be
+nonempty and put
+$\mathbf{s}=\pi'=(s_1,\ldots,s_m)$. Since $\pi$ is $k$-strict,
+\begin{equation}\label{eq:inverse-gap-bound}
+ 0\leq s_i-s_{i+1}<k\quad(1\leq i<m),
+ \qquad 0<s_m<k.
+\end{equation}
+Set $\mu^{(m)}=\varnothing$. For $i=m,m-1,\ldots,1$, define recursively
+\begin{equation}\label{eq:inverse-recursion}
+ \mu^{(i-1)}=\sigma_{s_i}\bigl(\mu^{(i)}\bigr).
+\end{equation}
+Inductively, $\bk(\mu^{(i)})=s_{i+1}$, with $s_{m+1}=0$. Thus
+\eqref{eq:inverse-gap-bound} is exactly the admissibility condition in
+\Cref{lem:block-transfer}. That lemma gives
+$\tau(\mu^{(i-1)})=\mu^{(i)}$ and
+$\bk(\mu^{(i-1)})=s_i$. Therefore
+$\mathbf{s}(\mu^{(0)})=\mathbf{s}$, so $\Phi_k(\mu^{(0)})=\pi$. The same
+reverse recursion is forced by \Cref{lem:converse-transfer}; hence the
+preimage is unique. This proves bijectivity and the theorem.
+\end{proof}

@@ -1,0 +1,178 @@
+\section{The block transfer}\label{sec:transfer}
+
+For a partition $\nu$, let
+\[
+ \operatorname{supp}(\nu)=\{a\geq1:m_a(\nu)>0\},
+\]
+where $m_a(\nu)$ is the multiplicity of the part $a$. The transfer below
+changes multiplicities, while the block decompositions are determined by this
+finite support set.
+
+\begin{lemma}[Greedy interval lemma]\label{lem:greedy-interval}
+Let $D$ be a finite set of integers and let $k\geq1$. Partition $D$ by the
+following two greedy procedures:
+\begin{enumerate}
+\item start with the least unused element $b$, take all unused elements in
+$[b,b+k]$, and continue upward;
+\item start with the greatest unused element $a$, take all unused elements in
+$[a-k,a]$, and continue downward.
+\end{enumerate}
+The two procedures produce the same number of blocks.
+\end{lemma}
+
+\begin{proof}
+In the first procedure, record the least element selected at each step. These
+recorded elements differ pairwise by more than $k$, and every subset of $D$
+whose distinct elements differ pairwise by more than $k$ contains at most one
+element in each greedy block. Thus the number of blocks in the first
+procedure is the maximum cardinality of a $k$-separated subset of $D$.
+The greatest-first procedure has the same property, using its greatest
+elements as the recorded separated subset. Hence the two block counts agree.
+\end{proof}
+
+Let $\lambda\in\Rk$ be nonempty. Define $\tau(\lambda)$ by acting
+simultaneously on its $k$-blocks. From every block with largest part $a>k$,
+replace one occurrence of $a$ by $a-k$. From the final block with largest
+part $a\leq k$, if it exists, delete one occurrence of $a$. The resulting
+partition is again $k$-regular. The decrease in size is the sum of the block
+weights:
+\begin{equation}\label{eq:size-transfer}
+ |\tau(\lambda)|=|\lambda|-\bk(\lambda).
+\end{equation}
+
+The reverse operation is explicit. For an integer $w>0$, let $r$ be its least
+nonnegative residue modulo $k$.
+
+\begin{lemma}[Explicit reverse transfer]\label{lem:block-transfer}
+Let $\mu\in\Rk$, put $h=\bk(\mu)$, and suppose that
+\begin{equation}\label{eq:admissible-weight}
+ h\leq w\leq h+k-1.
+\end{equation}
+Construct $\sigma_w(\mu)$ by the following finite algorithm.
+\begin{enumerate}
+\item If $r>0$, adjoin one part $r$ to $\mu$.
+\item Leave all parts of size at most $r$ fixed. On the distinct values in
+$\operatorname{supp}(\mu)$ larger than $r$, work from the smallest upward. If
+$b$ is the smallest unprocessed value, make a reverse block from all
+unprocessed values in $[b,b+k]$, and continue with values larger than $b+k$.
+\item In every reverse block, replace one occurrence of its smallest part $b$
+by $b+k$.
+\end{enumerate}
+Then $\sigma_w(\mu)\in\Rk$ and
+\begin{equation}\label{eq:transfer-inverse}
+ \tau\bigl(\sigma_w(\mu)\bigr)=\mu,
+ \qquad
+ \bk\bigl(\sigma_w(\mu)\bigr)=w.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The algorithm is deterministic and terminates because the support is finite.
+Every new value has the same nonzero residue modulo $k$ as the value it
+replaces, so $\sigma_w(\mu)$ is $k$-regular.
+
+Write
+\begin{equation}\label{eq:decompose-h}
+ h=ak+t,\qquad 0\leq t<k.
+\end{equation}
+There are $a$ blocks of $\mu$ whose largest parts exceed $k$; if $t>0$, the
+remaining block has largest part $t$. Let
+\[
+ D_r=\{d\in\operatorname{supp}(\mu):d>r\}.
+\]
+Removing the values at most $r$ removes the terminal block when $r\geq t$,
+and leaves a nonempty part of it when $r<t$. The blocks with largest parts
+greater than $k$ retain their largest parts, so the greatest-first
+decomposition of $D_r$ has $a$ blocks when $r\geq t$, and $a+1$ blocks when
+$r<t$. By \Cref{lem:greedy-interval}, the reverse-block algorithm in step 2
+has the same number, say $q$, of blocks. Consequently $q=a$ in the first
+case and $q=a+1$ in the second. The interval condition
+\eqref{eq:admissible-weight} gives $w=ak+r$ in the first case and
+$w=(a+1)k+r$ in the second. Therefore $qk+r=w$.
+
+Let the reverse blocks have smallest values $b_1<\cdots<b_q$. Consecutive
+smallest values satisfy $b_{j+1}>b_j+k$. After step 3, the values originating
+in the $j$th reverse block lie in $[b_j,b_j+k]$ and include $b_j+k$.
+Moreover, $b_j+k<b_{j+1}$, so the top-down decomposition cannot merge two
+adjacent reverse blocks. It therefore recovers these intervals, in reverse
+order, as blocks with largest values $b_q+k,\ldots,b_1+k$. If $r>0$, all
+fixed values are at most $r$ and the adjoined value $r$ is present. When
+$q>0$, they lie below $b_1$ and form the final block; when $q=0$, they form
+the only block. In both cases its largest value is $r$.
+
+Thus the block weights of $\sigma_w(\mu)$ are $q$ copies of $k$ and, when
+$r>0$, one weight $r$; their sum is $qk+r=w$. Applying $\tau$ lowers one
+$b_j+k$ to $b_j$ in every nonterminal block and removes the adjoined part
+$r$ from the terminal block. All multiplicities are thereby restored, so
+$\tau(\sigma_w(\mu))=\mu$.
+\end{proof}
+
+\begin{lemma}[Forward transfer is inverted by the algorithm]
+\label{lem:converse-transfer}
+Let $\lambda\in\Rk$ be nonempty, put $w=\bk(\lambda)$, and set
+$\mu=\tau(\lambda)$. Then
+\begin{equation}\label{eq:block-drop}
+ \bk(\mu)\leq w\leq\bk(\mu)+k-1,
+\end{equation}
+and $\lambda=\sigma_w(\mu)$.
+\end{lemma}
+
+\begin{proof}
+Write $w=ak+r$ with $0\leq r<k$. The $a$ nonterminal blocks of $\lambda$ have
+largest parts $A_1>\cdots>A_a>k$. If $r>0$, the final block has largest
+part $r$; if $r=0$, there is no final block of weight less than $k$.
+
+For $1\leq j\leq a$, put $c_j=A_j-k$. The image under $\tau$ of the $j$th
+nonterminal block has support contained in $[c_j,c_j+k]$ and contains
+$c_j$, because one occurrence of $A_j$ was moved to $A_j-k$. For
+$1\leq j<a$, the next lower nonterminal block satisfies
+\[
+ c_{j+1}+k=A_{j+1}<A_j-k=c_j,
+\]
+by the defining greedy separation of the original blocks. Thus the support
+intervals $[c_j,c_j+k]$ are pairwise separated. If a terminal block exists,
+its largest part is $r<c_a$; after the deletion, every surviving terminal
+value is at most $r$.
+
+Consequently, the distinct values of $\mu$ larger than $r$ are partitioned by
+the reverse greedy procedure into exactly the $a$ transformed nonterminal
+blocks. It starts at $c_a$, recovers the support in $[c_a,c_a+k]$, and then
+proceeds successively through the separated intervals up to $[c_1,c_1+k]$.
+The values at most $r$ are precisely the unchanged terminal values. Step 3 of
+the construction of $\sigma_w(\mu)$ therefore reverses every move made by
+$\tau$, including the possible terminal deletion. Hence $\lambda=\sigma_w(\mu)$.
+
+It remains to compare block indices. Set
+\[
+ D_r=\{d\in\operatorname{supp}(\mu):d>r\}.
+\]
+If $D_r$ is empty, then $a=0$ and all parts of $\mu$ are at most $r$.
+Hence $\bk(\mu)=t$ for some $0\leq t\leq r$, where $t=0$ means that $\mu$
+is empty.
+
+Suppose that $D_r$ is nonempty. Its bottom-up decomposition has the $a$
+transformed nonterminal blocks identified above, so \Cref{lem:greedy-interval}
+shows that its top-down decomposition also has exactly $a$ blocks. Since $\mu$
+is $k$-regular, the top of its lowest block cannot equal $k$. If that top is
+greater than $k$, then all $a$ blocks have weight $k$. Values at most $r$ either
+join the lowest block or form a terminal block of top $t\leq r$; in either event
+\[
+ \bk(\mu)=ak+t\qquad(0\leq t\leq r),
+\]
+with $t=0$ when there is no terminal block. If the lowest block has top less
+than $k$, it is itself the terminal block and contains every positive value
+of $\mu$ at most $r$. Its top $t$ satisfies $r<t<k$, while the other $a-1$
+blocks have weight $k$. Thus
+\[
+ \bk(\mu)=(a-1)k+t\qquad(r<t<k).
+\]
+The first formula also covers $D_r=\varnothing$. In the two cases,
+respectively,
+\[
+ w-\bk(\mu)=r-t,
+ \qquad
+ w-\bk(\mu)=k+r-t.
+\]
+Both differences lie in $\{0,1,\ldots,k-1\}$, which proves
+\eqref{eq:block-drop}.
+\end{proof}

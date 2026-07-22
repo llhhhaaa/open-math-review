@@ -1,0 +1,32 @@
+name: Counterexample or bug
+description: Report a mathematical counterexample or a reproducible implementation defect.
+title: "[counterexample] "
+labels: [counterexample-or-bug]
+body:
+  - type: input
+    id: paper
+    attributes:
+      label: Paper and version
+      placeholder: k-block-index-bijection v0.2.0
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Minimal input or parameter values
+      description: Include k and the partition or other exact input.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior or contradiction
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include commands and output if this concerns code.
+    validations:
+      required: true

@@ -1,0 +1,18 @@
+# TeX build products
+**/latex/build/
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.fdb_latexmk
+**/*.fls
+**/*.log
+**/*.out
+**/*.toc
+
+# Python caches
+**/__pycache__/
+**/*.py[cod]
+
+# Local editor state
+.vscode/
+.idea/

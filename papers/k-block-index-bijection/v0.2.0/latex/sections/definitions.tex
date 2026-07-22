@@ -1,0 +1,34 @@
+\section{Definitions and statement of the result}\label{sec:definitions}
+
+A partition is a finite weakly decreasing sequence of positive integers. Its
+parts are understood with multiplicity. Fix an integer $k\geq2$. A partition
+is \emph{$k$-regular} if none of its parts is divisible by $k$, and it is
+\emph{$k$-strict} if every part occurs fewer than $k$ times. Let $\Rk$ and
+$\Sk$ denote the corresponding sets, including the empty partition.
+
+Let $\lambda\in\Rk$ be nonempty. Its \emph{$k$-blocks} are obtained by
+working from the largest unused part downward. If $a$ is the largest part not
+yet assigned, the next block contains all remaining parts with values in the
+interval $[a-k,a]$. The block has weight $k$ when $a>k$, and weight $a$ when
+$a\leq k$. The \emph{$k$-block index} is the sum of the block weights and is
+denoted by $\bk(\lambda)$; set $\bk(\varnothing)=0$. Since the only possible
+block with largest part at most $k$ is the final block, there is at most one
+block whose weight is less than $k$.
+
+For $\pi=(\pi_1,\pi_2,\ldots)\in\Sk$, extend the sequence by
+$\pi_j=0$ past its length and define
+\begin{equation}\label{eq:k-alternating-length}
+ \lk(\pi)=\sum_{j\geq0}\bigl(\pi_{jk+1}-\pi_{(j+1)k}\bigr).
+\end{equation}
+The sum is finite. This is the statistic used in \cite{WangZhang2026}.
+
+\begin{theorem}\label{thm:main}
+For every integer $k\geq2$, there is a bijection $\Phi_k:\Rk\to\Sk$ such
+that, for every $\lambda\in\Rk$,
+\begin{equation}\label{eq:statistic-preservation}
+ |\Phi_k(\lambda)|=|\lambda|,\qquad
+ \ell\bigl(\Phi_k(\lambda)\bigr)=\bk(\lambda),\qquad
+ \lk\bigl(\Phi_k(\lambda)\bigr)=\ell(\lambda).
+\end{equation}
+Consequently, \eqref{eq:announced-identity} holds.
+\end{theorem}

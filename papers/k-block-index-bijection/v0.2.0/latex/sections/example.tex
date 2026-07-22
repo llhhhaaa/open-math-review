@@ -1,0 +1,33 @@
+\section{An example}\label{sec:example}
+
+Take $k=4$ and $\lambda=(10,7,3,1)$. Its first block is $(10,7)$ and its
+terminal block is $(3,1)$, so $\bk(\lambda)=7$. Iterating the transfer gives
+the following table.
+
+\begin{table}[H]
+\centering
+\caption{The transfer sequence for $k=4$ and $\lambda=(10,7,3,1)$.}
+\label{tab:transfer-example}
+\begin{tabular}{ccl}
+\toprule
+$i$ & $\lambda^{(i)}$ & $\bk(\lambda^{(i)})$ \\
+\midrule
+0 & $(10,7,3,1)$ & $7$ \\
+1 & $(7,6,1)$ & $5$ \\
+2 & $(6,3)$ & $4$ \\
+3 & $(3,2)$ & $3$ \\
+4 & $(2)$ & $2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Thus $\mathbf{s}(\lambda)=(7,5,4,3,2)$ and
+\begin{equation*}
+ \Phi_4(\lambda)=(5,5,4,3,2,1,1).
+\end{equation*}
+This partition is $4$-strict. Its size is $21$, its length is $7$, and
+\begin{equation*}
+ \ell_4\bigl(\Phi_4(\lambda)\bigr)
+ =(5-3)+(2-0)=4=\ell(\lambda),
+\end{equation*}
+which displays the three statistic equalities in \Cref{thm:main}.

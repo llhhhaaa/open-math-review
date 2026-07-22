@@ -1,0 +1,26 @@
+name: Prior art or citation
+description: Report relevant prior work or a citation error.
+title: "[prior-art] "
+labels: [prior-art]
+body:
+  - type: input
+    id: paper
+    attributes:
+      label: Paper and version
+      placeholder: k-block-index-bijection v0.2.0
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Stable source
+      description: Give a DOI, arXiv identifier, publisher URL, or bibliographic entry.
+    validations:
+      required: true
+  - type: textarea
+    id: overlap
+    attributes:
+      label: Exact overlap or correction
+      description: Identify which claim, definition, or proof idea is affected.
+    validations:
+      required: true

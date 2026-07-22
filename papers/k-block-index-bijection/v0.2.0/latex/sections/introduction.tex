@@ -1,0 +1,24 @@
+\section{Introduction}
+
+For a partition $\lambda$, write $|\lambda|$ for its size and
+$\ell(\lambda)$ for its length. Wang and Zhang introduced the $k$-block index
+for $k$-regular partitions in their study of refinements of Euler's partition
+theorem \cite{WangZhang2026}. Their definition extends the block-index setting
+considered in \cite{LiWangXu2026}. In Section~7.2 of \cite{WangZhang2026},
+they stated the following identity and left its proof to the reader:
+\begin{equation}\label{eq:announced-identity}
+ \sum_{\lambda\in\Rk}x^{\ell(\lambda)}y^{\bk(\lambda)}q^{|\lambda|}
+ =
+ \sum_{\pi\in\Sk}x^{\lk(\pi)}y^{\ell(\pi)}q^{|\pi|}.
+\end{equation}
+Here $\Rk$, $\Sk$, $\bk$, and $\lk$ are defined in
+\Cref{sec:definitions}. The purpose of this paper is to give a direct
+bijective proof of \eqref{eq:announced-identity}.
+
+The construction is local. A simultaneous transfer acts on every block of a
+$k$-regular partition. Repeating the transfer records a decreasing sequence
+of block indices. The central point is that consecutive entries differ by at
+most $k-1$. Consequently, conjugation of the sequence produces a $k$-strict
+partition. The inverse is obtained by a reverse transfer that groups parts
+from the bottom upward. The proof also identifies the two statistics without
+recourse to a product expansion.
